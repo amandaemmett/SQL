@@ -1,0 +1,66 @@
+-Create a toy store database-
+CREATE TABLE toy_corner (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, recommended_age INTEGER, instock INTEGER, sold INTEGER, aisle INTEGER); 
+
+INSERT INTO toy_corner VALUES (1, "legos", 30.99, 10, 5, 3, 1);
+INSERT INTO toy_corner VALUES (2, "barbie", 12.89, 5, 10, 4, 2);
+INSERT INTO toy_corner VALUES (3, "baby doll", 17.68, 2, 8, 10, 2);
+INSERT INTO toy_corner VALUES (4, "puzzle", 8.99, 10, 8, 6, 1);
+INSERT INTO toy_corner VALUES (5, "game", 12.89, 7, 9, 5, 3);
+INSERT INTO toy_corner VALUES (6, "action_figure", 18.99, 7, 8, 9, 3);
+INSERT INTO toy_corner VALUES (7, "slime", 3.99, 7, 13, 6, 4);
+INSERT INTO toy_corner VALUES (8, "playdoh", 2.99, 4, 3, 11, 4);
+INSERT INTO toy_corner VALUES (9, "minibrands", 10.99, 5, 19, 32, 3);
+INSERT INTO toy_corner VALUES (10, "bratz", 20.99, 7, 19, 8, 2);
+INSERT INTO toy_corner VALUES (11, "polly_pocket", 12.50, 7, 5, 8, 2);
+INSERT INTO toy_corner VALUES (12, "disney", 13.49, 2, 7, 0, 2);
+INSERT INTO toy_corner VALUES (13, "dress_up", 30.49, 2, 9, 13, 2);
+INSERT INTO toy_corner VALUES (14, "kinetic_sand", 5.99, 5, 7,4, 4);
+INSERT INTO toy_corner Values (15, "car", 23.59, 4, 7, 10, 3);
+
+-Display the database ordered by price-
+SELECT * FROM toy_corner ORDER BY price DESC;
+
+-What toys are suitable for older children?-
+SELECT * FROM toy_corner WHERE recommended_age >2 ORDER BY sold DESC;
+
+-How many toys are selling, and what are their prices?-
+SELECT sold, price FROM toy_corner;
+
+-How much Revenue has each item created?-
+SELECT SUM(sold*price) Revenue 
+FROM toy_corner
+GROUP BY id;
+
+-What is the total revenue for the store?-
+SELECT SUM(sold*price) Total_Revenue
+FROM toy_corner;
+
+-Add cost column to database-
+ALTER TABLE toy_corner ADD cost INTEGER default "unknown";
+
+BEGIN TRANSACTION;
+UPDATE toy_corner SET cost=10 WHERE id=1;
+UPDATE toy_corner SET cost=6 WHERE id=2;
+UPDATE toy_corner SET cost=5 WHERE id=3;
+UPDATE toy_corner SET cost=4 WHERE id=4;
+UPDATE toy_corner SET cost=5 WHERE id=5;
+UPDATE toy_corner SET cost=7 WHERE id=6;
+UPDATE toy_corner SET cost=3 WHERE id=7;
+UPDATE toy_corner SET cost=.5 WHERE id=8;
+UPDATE toy_corner SET cost=4 WHERE id=9;
+UPDATE toy_corner SET cost=12 WHERE id=10;
+UPDATE toy_corner SET cost=5 WHERE id=11;
+UPDATE toy_corner SET cost=3 WHERE id=12;
+UPDATE toy_corner SET cost=6 WHERE id=13;
+UPDATE toy_corner SET cost=2 WHERE id=14;
+UPDATE toy_corner SET cost=11 WHERE id=15;
+COMMIT;
+
+
+SELECT * FROM toy_corner;
+
+-What toys are bringing in the most profit?-
+SELECT SUM((sold*price)-cost) Profit
+FROM toy_corner
+GROUP BY id;
+
