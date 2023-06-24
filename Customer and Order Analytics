@@ -67,3 +67,32 @@ WHERE length(location)>16
 AND location like '%NY%'
 GROUP BY location
 HAVING COUNT(orderID)>=3
+
+/*How many of each type of headphone were sold in February?*/
+SELECT product,COUNT(orderID)
+FROM bit_db.FebSales 
+WHERE product like '%headphone%'
+GROUP BY product
+
+/*What was the average amount spent per account in February?*/
+SELECT SUM(quantity*price)/COUNT(DISTINCT cust.acctnum)
+FROM bit_db.febsales feb
+LEFT JOIN bit_db.customers cust
+ON feb.orderid=cust.order_id
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID'
+
+/*What was the average quantity of products purchased per account in February?*/
+SELECT sum(quantity)/count(cust.acctnum)
+FROM bit_db.febsales feb
+LEFT JOIN bit_db.customers cust
+ON feb.orderid=cust.order_id
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID'
+
+/*Which product brought in the most revenue in January and how much revenue did it bring in total?*/
+SELECT DISTINCT product, SUM(quantity*price) revenue
+FROM bit_db.jansales
+GROUP BY product
+ORDER BY revenue DESC
+LIMIT 1
