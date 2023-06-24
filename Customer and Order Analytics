@@ -58,3 +58,12 @@ SELECT product
 FROM bit_db.febsales
 WHERE location like '%Los Angeles%'
 GROUP BY product
+
+/*Which locations in New York received at least 3 orders in January, and how many orders did they each receive?*/
+SELECT DISTINCT location
+,COUNT(orderID)
+FROM bit_db.jansales
+WHERE length(location)>16
+AND location like '%NY%'
+GROUP BY location
+HAVING COUNT(orderID)>=3
