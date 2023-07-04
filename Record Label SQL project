@@ -1,4 +1,5 @@
-In this project, I'm querying a database with multiple tables in it to answer questions about the data using SQL 
+For this project, I downloaded Chinook data from Kaggle. Then I created a table to insert Chinook data into. Finally, I performed analytics on the data using SQL. 
+
 
 /*Show Customers (their full names, customer ID, and country) who are not in Canada*/
 SELECT customerid, firstname, lastname, country FROM customers
