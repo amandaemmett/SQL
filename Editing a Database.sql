@@ -1,4 +1,4 @@
--Create a data base for an app, based on hulu-
+--Create a data base for an app, based on hulu
 
 CREATE TABLE hulu_user_data (id INTEGER PRIMARY KEY AUTOINCREMENT, age INTEGER, email TEXT, profiles INTEGER, gender TEXT, watchtime_hours INTEGER);
 
@@ -41,7 +41,7 @@ VALUES (3, 3);
 
 SELECT * FROM hulu_user_data;
 
--Edit tables to add new data-
+--Edit tables to add new data
 ALTER TABLE hulu_user_data ADD occupation TEXT default "unknown";
 
 SELECT * FROM hulu_user_data;
