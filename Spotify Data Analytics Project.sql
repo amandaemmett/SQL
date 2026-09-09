@@ -1,6 +1,6 @@
-#For this project, I downloaded Spotify data from Kaggle. Then I created a table to insert Spotify data into. Finally, I performed analytics on the data using SQL. 
+--For this project, I downloaded Spotify data from Kaggle. Then I created a table to insert Spotify data into. Finally, I performed analytics on the data using SQL. 
 
-#Creating the table:
+--Creating the table:
 CREATE TABLE BIT_DB.Spotifydata (
 id integer PRIMARY KEY,
 artist_name varchar NOT NULL,
@@ -21,9 +21,9 @@ tempo decimal(6,3) NOT NULL,
 duration_ms integer NOT NULL,
 time_signature integer NOT NULL )
 
-#Then I inserted the Spotify Data .csv into the table.
+--Then I inserted the Spotify Data .csv into the table.
 
-#Next, I explored the data using the following SQL:
+--Next, I explored the data using the following SQL:
 
 SELECT *
 FROM bit_db.spotifydata
