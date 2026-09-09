@@ -1,4 +1,4 @@
--Create an author database with multiple tables-
+--Create an author database with multiple tables
 
 CREATE TABLE persons 
     (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER);
@@ -50,32 +50,32 @@ INSERT INTO personal_life (author_id, married, pets, residence) VALUES (3, "yes"
 INSERT INTO personal_life (author_id, married, pets, residence) VALUES (4, "yes", "yes", "bangor");
 INSERT INTO personal_life (author_id, married, pets, residence) VALUES (5, "yes", "yes", "london");
 
--Who wrote each book?-
+--Who wrote each book?
 SELECT persons.name, books.name FROM persons
     JOIN books
     ON persons.id=books.author_id;
 
--Where were books of different genres written?-
+--Where were books of different genres written?
 SELECT personal_life.residence, books.genre FROM personal_life
     JOIN books
     ON personal_life.author_id=books.author_id;
     
--Who wrote the book with the most pages at the youngest age?-    
+--Who wrote the book with the most pages at the youngest age?    
 SELECT persons.name, persons.age, books.name, books.pages FROM persons
     JOIN books
     WHERE persons.id=books.author_id
     ORDER BY persons.age, books.pages;
 
--Add a new author to the table-
+--Add a new author to the table
 INSERT INTO persons (name, age) VALUES ("Hoover", 43);
 
--Where did all the authors live?-
+--Where did all the authors live?
 SELECT p.name, pl.residence
 FROM persons p
 LEFT OUTER JOIN personal_life pl
 ON p.id=pl.author_id;
 
--Clean the data-
+--Clean the data
 SELECT * FROM books
 WHERE LOWER(name)="the dark tower"
 ;
@@ -105,24 +105,24 @@ UPDATE books SET sequel_id=27 WHERE id=15;
 SELECT * FROM books;
 
 
--What books have a sequel?-
+--What books have a sequel?
 SELECT books.name first_book, sequel_id.name second_book
 FROM books
 JOIN books sequel_id
 ON books.id=sequel_id.sequel_id;
 
--How many authors are in our database?-
+--How many authors are in our database?
 SELECT COUNT(DISTINCT author_id) number_of_authors
 FROM books;
 
--What are the most, least, and average number of pages?-
+--What are the most, least, and average number of pages?
 SELECT MAX(pages) max_pages, MIN(pages) min_pages, ROUND(AVG(pages)) avg_pages 
 FROM books;
 
--Do we have any information onan author who's name ends with "way"?-
+--Do we have any information onan author who's name ends with "way"?
 SELECT * FROM persons WHERE name LIKE "%way";
 
--Join all the information from the database-
+--Join all the information from the database
 SELECT * 
 FROM persons
 JOIN books
