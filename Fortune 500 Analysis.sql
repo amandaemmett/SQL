@@ -1,4 +1,4 @@
-Table uploaded from break_into_tech
+--Table uploaded from break_into_tech
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
     company_name TEXT,
