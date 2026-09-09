@@ -1,4 +1,4 @@
--Create a toy store database-
+--Create a toy store database
 CREATE TABLE toy_corner (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, recommended_age INTEGER, instock INTEGER, sold INTEGER, aisle INTEGER); 
 
 INSERT INTO toy_corner VALUES (1, "legos", 30.99, 10, 5, 3, 1);
@@ -17,25 +17,25 @@ INSERT INTO toy_corner VALUES (13, "dress_up", 30.49, 2, 9, 13, 2);
 INSERT INTO toy_corner VALUES (14, "kinetic_sand", 5.99, 5, 7,4, 4);
 INSERT INTO toy_corner Values (15, "car", 23.59, 4, 7, 10, 3);
 
--Display the database ordered by price-
+--Display the database ordered by price
 SELECT * FROM toy_corner ORDER BY price DESC;
 
--What toys are suitable for older children?-
+--What toys are suitable for older children?
 SELECT * FROM toy_corner WHERE recommended_age >2 ORDER BY sold DESC;
 
--How many toys are selling, and what are their prices?-
+--How many toys are selling, and what are their prices?
 SELECT sold, price FROM toy_corner;
 
--How much Revenue has each item created?-
+--How much Revenue has each item created?
 SELECT SUM(sold*price) Revenue 
 FROM toy_corner
 GROUP BY id;
 
--What is the total revenue for the store?-
+--What is the total revenue for the store?
 SELECT SUM(sold*price) Total_Revenue
 FROM toy_corner;
 
--Add cost column to database-
+--Add cost column to database
 ALTER TABLE toy_corner ADD cost INTEGER default "unknown";
 
 BEGIN TRANSACTION;
@@ -59,7 +59,7 @@ COMMIT;
 
 SELECT * FROM toy_corner;
 
--What toys are bringing in the most profit?-
+--What toys are bringing in the most profit?
 SELECT SUM((sold*price)-cost) Profit
 FROM toy_corner
 GROUP BY id;
