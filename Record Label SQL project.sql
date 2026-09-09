@@ -1,4 +1,4 @@
-For this project, I downloaded Chinook data from Kaggle. Then I created a table to insert Chinook data into. Finally, I performed analytics on the data using SQL. 
+/*For this project, I downloaded Chinook data from Kaggle. Then I created a table to insert Chinook data into. Finally, I performed analytics on the data using SQL.*/ 
 
 
 /*Show Customers (their full names, customer ID, and country) who are not in Canada*/
