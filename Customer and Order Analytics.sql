@@ -1,4 +1,4 @@
-In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data. 
+--In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data. 
 
 /* How many orders where placed in January? */
 SELECT count(*) FROM bit_db.JanSales
