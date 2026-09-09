@@ -20,6 +20,3 @@ This repository contains SQL queries I've written to answer real business questi
 | [Author Analytics](./Author%20Analytics) | *[one-line description]* |
 | [Editing a Database](./Editing%20a%20Database) | Data cleanup and database editing (updates, deletes, schema changes) |
 
-## Note on file formatting
-
-These files currently have no file extension, so GitHub displays them as plain text rather than applying SQL syntax highlighting. Renaming each file with a `.sql` extension (e.g., `Customer and Order Analytics.sql`) will make them easier to read directly in the browser.
